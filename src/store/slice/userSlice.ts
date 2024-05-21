@@ -10,6 +10,7 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUserData: (state, action: PayloadAction<any>) => {
+            console.log(action);
             state.userData = action.payload;
         },
         setStoreToken: (state, action: PayloadAction<string>) => {
@@ -23,7 +24,5 @@ export const userSlice = createSlice({
         },
     },
 });
-
 export const { setUserData, setStoreToken, logout } = userSlice.actions;
-
 export default userSlice.reducer;

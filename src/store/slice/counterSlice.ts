@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 
-interface counterType {
-    value: number
-}
+// interface counterType {
+//     value: number
+// }
 const initialState = {
     value: 0
 }

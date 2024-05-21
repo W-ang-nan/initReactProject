@@ -1,9 +1,11 @@
-import { useAppDispatch, useAppSelector } from "@/utils/Hooks";
+import { useAppDispatch, useAppSelector, useGetToken } from "@/utils/Hooks";
 import { setStoreToken, setUserData, logout } from "@/store/slice/userSlice";
+import { Button } from "antd";
+
 const Home = () => {
   const dispatch = useAppDispatch();
   const selector = useAppSelector((state) => state.user);
-  console.log(selector);
+  console.log(selector.token);
   const setToken = (token: string) => {
     dispatch(setStoreToken(token));
   };
@@ -13,20 +15,26 @@ const Home = () => {
   const exit = () => {
     dispatch(logout());
   };
+
+  function IsLogin() {
+    if (useGetToken()) {
+      return (
+        <Button type="primary" danger onClick={() => exit()}>
+          logout
+        </Button>
+      );
+    }
+  }
+
   return (
     <div>
-      <AButton type="primary" onClick={() => setToken("123")}>
+      <Button type="primary" onClick={() => setToken("123")}>
         set token
-      </AButton>
-      <AButton
-        type="primary"
-        onClick={() => setData({ name: "123", age: 123 })}
-      >
+      </Button>
+      <Button type="primary" onClick={() => setData({ name: "123", age: 123 })}>
         set Data
-      </AButton>
-      <AButton type="primary" danger onClick={() => exit()}>
-        logout
-      </AButton>
+      </Button>
+      <IsLogin />
     </div>
   );
 };

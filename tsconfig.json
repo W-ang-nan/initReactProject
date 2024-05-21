@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
@@ -26,7 +25,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  // "include": ["src"],
-  "include": ["src/**/*.ts","*.d.ts","src/**/*.tsx"],
+  "include": ["src","*.d.ts","src/**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

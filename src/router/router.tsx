@@ -1,5 +1,6 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import { getToken } from "@/utils/request/auth";
+// import { getToken } from "@/utils/request/auth";
+// import { getToken } from "@/utils/request/auth";
 import Home from "@/views/Home";
 import About from "@/views/About";
 import Login from "@/views/user/Login";
@@ -50,8 +51,8 @@ const RouterBeforeEach = (props: { route: any; children: any }) => {
   }
 
   // 判断是否已登录
-  const isLogin = getToken();
-  console.log(isLogin);
+  // const isLogin = getToken();
+  // console.log(isLogin);
 
   // // 未登录 需要身份验证的跳转到登录页面
   // if (!isLogin && props?.route?.meta?.requiresAuth) {

@@ -5,7 +5,7 @@ import { HashRouter as Router } from "react-router-dom";
 // import LeftMenu from "@/components/custom/LeftMenu";
 import "./index.css";
 import App from "./App";
-import store from "./store/store.ts";
+import store from "@/store/store";
 import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

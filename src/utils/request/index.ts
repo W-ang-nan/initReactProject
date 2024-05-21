@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { errorCodeType } from './error';
-import { getToken, removeToken } from "./auth";
+import { getToken } from "./auth";
 import { saveAs } from "file-saver";
 import JSONBIG from 'json-bigint';
 import { tansParams } from './params';
@@ -32,7 +32,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     // 是否需要设置 token放在请求头
     const isToken = (config.headers || {}).isToken === false;
-    const isRepeatSubmit = (config.headers || {}).repeatSubmit === false;
+    // const isRepeatSubmit = (config.headers || {}).repeatSubmit === false;
 
     if (getToken() && !isToken) {
         // config.headers["Authorization"] = getToken(); // 让每个请求携带自定义token 请根据实际情况自行修改
@@ -103,6 +103,7 @@ export function download(url: string, params: any) {
         }).then(res => {
             const blob = new Blob([res.data]);
             saveAs(blob, '结果导出.zip');
+            resolve(res)
         }).catch(err => {
             console.log(err);
             Msg.error("下载文件出现错误")
