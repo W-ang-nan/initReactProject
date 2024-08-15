@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer'
 import postcssPresetEnv from 'postcss-preset-env'
 import postCssPxToRem from 'postcss-pxtorem'
 import AutoImport from 'unplugin-auto-import/vite'
+import viteCompression from "vite-plugin-compression";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,7 +20,15 @@ export default defineConfig({
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true,
       },
-    })
+    }),
+    viteCompression({
+      verbose: true, // 是否在控制台输出压缩结果
+      disable: false, // 默认 false, 设置为 true 来禁用压缩
+      threshold: 10240, // 只处理大于此大小的资源（单位：字节）。默认值为 0。
+      algorithm: "gzip", // 使用 gzip 压缩
+      ext: ".gz", // 输出文件的扩展名
+      deleteOriginFile: false,
+    }),
   ],
   base: './',
   resolve: {
